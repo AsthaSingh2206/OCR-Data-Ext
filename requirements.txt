@@ -6,6 +6,6 @@ huggingface_hub
 paddleocr
 onnxruntime
 torch
-torch-cuda
-cudatoolkit
+# torch-cuda
+# cudatoolkit
 flask
