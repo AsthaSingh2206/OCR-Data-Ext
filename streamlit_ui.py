@@ -37,7 +37,7 @@ if uploaded_file and st.button('Process & Save to DB'):
     files = {'file': (uploaded_file.name, uploaded_file, 'application/pdf')}
     params = {'ocr_backend': ocr_backend, 'accelerator_device': accelerator_device}
     try:
-        resp = requests.post(f'{"https://2bec6a3ff1aa.ngrok-free.app"}/upload', files=files, data=params)
+        resp = requests.post(f'{"https://1796106249b4.ngrok-free.app"}/upload', files=files, data=params)
         if resp.status_code == 200:
             st.success('✅ File processed and saved!')
             with st.expander('View OCR JSON Output'):
@@ -53,7 +53,7 @@ st.markdown('#### <span style="color:#7B68EE;">2. Explore Uploaded Documents</sp
 
 docs = []
 try:
-    docs = requests.get(f'{"https://2bec6a3ff1aa.ngrok-free.app"}/docs').json()
+    docs = requests.get(f'{"https://1796106249b4.ngrok-free.app"}/docs').json()
 except Exception as e:
     st.error(f'Could not connect to backend: {e}')
 
@@ -68,7 +68,7 @@ if docs:
             st.write('**ID:**', doc_meta.get('id'))
             st.write('**Upload Time:**', doc_meta.get('uploaded_at', 'N/A'))
             if st.button('Show JSON Preview'):
-                doc_json = requests.get(f'{"https://2bec6a3ff1aa.ngrok-free.app"}/doc/{doc_id}').json()
+                doc_json = requests.get(f'{"https://1796106249b4.ngrok-free.app"}/doc/{doc_id}').json()
                 st.json(doc_json)
 else:
     st.info('No documents uploaded yet.')
@@ -90,7 +90,7 @@ if st.button('Run Query'):
     if not user_sql.strip():
         st.warning('Please enter a SQL query.')
     else:
-        resp = requests.post(f'{"https://2bec6a3ff1aa.ngrok-free.app"}/query', json={'sql': user_sql})
+        resp = requests.post(f'{"https://1796106249b4.ngrok-free.app"}/query', json={'sql': user_sql})
         if resp.status_code == 200:
             data = resp.json()
             st.write('Query Results:')
